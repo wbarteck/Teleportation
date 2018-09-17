@@ -29,7 +29,7 @@ class Tests {
 		assertTrue(jumpTest2.contains("Fortuna"));
 		
 		assertTrue(graph.canReachCity("Springton", "Atlantis"));
-		assertFalse(graph.canReachCity("Oakton", "Atlantis"));
+		assertFalse(graph.canReachCity("Oaktown", "Atlantis"));
 		
 		assertTrue(graph.cycleFrom("Oaktown"));
 		assertTrue(graph.cycleFrom("Paristown"));
