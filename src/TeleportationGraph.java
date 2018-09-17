@@ -51,8 +51,10 @@ public class TeleportationGraph {
 		}
 		return set;
 	}
-	
 	public boolean canReachCity(String a, String b) {
+		return canReachCityHelper(a,b,new ArrayList<String>());
+	}
+	private boolean canReachCityHelper(String a, String b, ArrayList<String> visited) {
 		// Nodes exist?
 		if (!graph.containsKey(a) || !graph.containsKey(b))
 			return false;
@@ -62,12 +64,14 @@ public class TeleportationGraph {
 		if (a.equals(b))
 			return true;
 		// search
+		visited.add(a);
 		for (Node n : src.adjacencyList) {
 			if (n.label.equals(dst.label))
 				return true;
 		}
 		for (Node n : src.adjacencyList) {
-			return canReachCity(n.label, b);
+			if (!visited.contains(n.label))
+				return canReachCityHelper(n.label, b, visited);
 		}
 		return false;
 	}
